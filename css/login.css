@@ -1,0 +1,53 @@
+body{
+
+    background-color: #A98FF2;
+
+}
+
+#wrapper {
+
+  position: relative;
+  display: flex;
+
+  justify-content: center;
+  margin-top: 40vh;
+
+}
+
+
+img {
+
+  position: absolute;
+
+  top: -225px;
+  width: 300px;
+  height: auto;
+  
+}
+
+#container {
+
+  background-color: #915DF5;
+
+  padding: 50px 35px;
+  max-width: 500px;
+  width: 90%;
+
+  box-sizing: border-box;
+
+  border-radius: 15px;
+
+  z-index: 1;
+
+  h1{
+
+    color: #F5EE76;
+
+  }
+}
+
+#buttonDiv{
+
+    text-align: center;
+
+}

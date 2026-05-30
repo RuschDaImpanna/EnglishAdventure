@@ -1,0 +1,138 @@
+html {
+
+    background-color: #F3EDB3;
+
+}
+
+/*Top part*/
+.topBlocks {
+
+    height: 15vh;
+
+    background-color: #915DF5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#topPath {
+
+
+    height: 105%;
+    width: 25vw;
+
+    background-color: #F3EDB3;
+
+}
+
+/*Bottom part*/
+.bottomBlocks {
+
+    position: absolute;
+
+    bottom: 0px;
+    right: 0;
+
+    height: 10vh;
+    width: 100%;
+
+    padding-bottom: 5px;
+
+
+    background-color: #915DF5;
+
+
+}
+#finalCard {
+
+    position: absolute;
+    padding: 20px 5% 0;
+
+    right: 0;
+
+    font-family: 'Quicksand';
+    color: #F3EDB3;
+
+    user-select: none;
+
+}
+
+/*Middle part*/
+#box {
+
+    position: absolute;
+
+    left: 20vw;
+    top: 50vh;
+
+    width: 25px;
+    height: 25px;
+
+    background-color: #915DF5;
+
+}
+.middlePart h1 {
+
+    position: absolute;
+    top: 0;
+    left: 47%;
+
+    font-family: 'Silkscreen';
+    font-size: 30px;
+
+    height: 50%;
+
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+
+    animation: colors 2.5s linear;
+    animation-iteration-count: infinite;
+
+    user-select: none;
+
+    z-index: 1;
+
+}
+
+/*Animation*/
+@keyframes colors {
+
+    100%,0%{
+		color: rgb(255,0,0);
+	}
+	8%{
+		color: rgb(255,127,0);
+	}
+	16%{
+		color: rgb(255,255,0);
+	}
+	25%{
+		color: rgb(127,255,0);
+	}
+	33%{
+		color: rgb(0,255,0);
+	}
+	41%{
+		color: rgb(0,255,127);
+	}
+	50%{
+		color: rgb(0,255,255);
+	}
+	58%{
+		color: rgb(0,127,255);
+	}
+	66%{
+		color: rgb(0,0,255);
+	}
+	75%{
+		color: rgb(127,0,255);
+	}
+	83%{
+		color: rgb(255,0,255);
+	}
+	91%{
+		color: rgb(255,0,127);
+	}
+
+}

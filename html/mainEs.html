@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="author" content="Santiago A. Sánchez">
+        <!--a.k.a Rusch Da Impanna-->
+    
+        <!--CSS-->
+        <link rel="stylesheet" href="../css/reset.css">
+        <link rel="stylesheet" href="../css/headAndFooterPages.css">
+        <link rel="stylesheet" href="../css/main.css">
+        
+
+        <!--Fonts-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:500,700|Bubblegum+Sans">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,500,1,200&icon_names=close,dehaze,group,home,how_to_vote,key,question_mark" />
+
+        <link rel="icon" href="../logoArt/womanPurple2.png">
+        <title>Página Principal - English Adventure</title>
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <!--Logo-->
+            <a href="mainEs.html"><img src="../logoArt/logoForPurple_Round.png" id="logo" alt="Logo English Adventure!"></a>
+
+            <!--Language-->
+            <div id="langWrapper">
+
+                    <input type="checkbox" id="langToggle" hidden>
+                    <label for="langToggle" id="langButton">Idioma</label>
+
+                    <!--Language list-->
+                    <div id="langList">
+
+                        <ul>
+                            <li><a onClick="sameLang()" id="sameLang">Español</a></li>
+                            <li><a href="mainEn.html" id="enLang">English</a></li>
+                        </ul>
+
+                    </div>
+
+            </div>
+
+        </header>
+
+        <nav id="menuWrapper">
+
+            <!--Menu button-->
+            <input type="checkbox" id="menuToggle" hidden>
+            <label for="menuToggle" id="menuButton" class="material-symbols-outlined">dehaze</label>
+
+            <!--Vertical menu-->
+            <div id="menuContainer">
+
+                <ul id="menuDisplay">
+
+                    <li>
+
+                    <a href="mainEs.html"><span class="material-symbols-outlined" role="button">home</span></a>
+
+                    <h4>Página principal</h4>
+
+                    </li>
+
+                    <li>
+
+                    <a href="loginEs.php"><span class="material-symbols-outlined" role="button">key</span></a>
+
+                    <h4>Ingresar</h4>
+
+                    </li>
+
+                    <li>
+
+
+                    <a href="aboutEs.html"><span class="material-symbols-outlined" role="button">group</span></a>
+
+                    <h4>¿Quiénes somos?</h4>
+
+                    </li>
+
+                    <li>
+                        
+                    <a href="feedbackEs.html"><span class="material-symbols-outlined" role="button">how_to_vote</span></a>
+
+                    <h4>Sugerencias</h4>
+
+                    </li>
+
+                    <li>
+                        
+                    <a href="faqEs.html"><span class="material-symbols-outlined" role="button">question_mark</span></a>
+
+                    <h4>FAQ</h4>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+
+        <article class="article" id="mainArticle">
+
+            <h1>¡Bienvenido a tu aventura de aprender inglés!</h1>
+            <a href="loginEs.php" id="loginBtn" role="button">Ingresar a la plataforma</a>
+
+            <img src="../logoArt/womanPurple2.png" alt="Mascota de English Adventure!"/>
+
+        </article>
+
+        <br/>
+        <br/>
+        <br/>
+
+        <article class="article" id="about">
+
+            <h1>¿Qué es English Adventure!?</h1>
+
+            <div id="aboutPart1">
+
+                <div id="textPart1"><p>Es una iniciativa de aprendizaje para la institución educativa IED Rincón Santo en Cajicá - Cundinamarca - Colombia.</p></div>
+                <img src="../images/rinconSanto.png" alt="Escudo de IED Rincón Santo" id="rinconSanto"/>
+
+            </div>
+
+            <br/>
+            <br/>
+
+            <div id="aboutPart2">
+
+                <div id="textPart2"><p dir="rtl">Este proyecto fue pensado como estrategia innovadora de aprendizaje de inglés para los estudiantes en bachillerato por medio de contenido como lecturas, videos, música y videojuegos; todo esto, también en una plataforma que muestra el progreso y calificaciones de la asignatura.&lrm;</p></div>
+                <img src="../images/aboutStudents1.jpg" alt="Estudiantes en un salón inclusivo" id="aboutStudents1"/>
+                <h6>Archivo: Viviana A. Castañeda</h6>
+
+            </div>
+
+            <br/>
+            <br/>
+
+            <div id="aboutPart3">
+
+                <div class="images">
+
+                    <img src="https://co-imagina.cl/wp-content/uploads/2025/04/blank-profile-picture-973460_1280.png" alt="Mgst Viviana A. Castañeda" id="viviana"/>
+                    
+                    <img src="https://co-imagina.cl/wp-content/uploads/2025/04/blank-profile-picture-973460_1280.png" alt="Santiago A. Sánchez" id="rusch"/>
+
+                </div>
+
+                <h4>Creado por Mgst Viviana A. Castañeda</h4>
+                <h4>Desarrollado por Santiago A. Sánchez</h4>
+
+                <a href="aboutEs.html" id="aboutBtn" role="button">Conocer más</a>
+
+            </div>
+
+        </article>
+        
+        <br/>
+        <br/>
+        <br/>
+    
+    </body>
+
+    <footer>
+
+        <h4>English Adventure! ©</h4>
+        <h4>There's not just one way to learn</h4>
+
+        <br/>
+
+        <h5>Santiago Sánchez - 2025</h5>
+
+        <br/>
+
+        <a href="legalEs.html"><h4>Términos y Condiciones - Política de Tratamiento de Datos</h4></a>
+
+        <h6>Rusch da Impanna - 2025</h6>
+
+    </footer>
+
+    <script src="../js/lang.js"></script>
+    <script src="../js/menu.js"></script>
+
+</html>

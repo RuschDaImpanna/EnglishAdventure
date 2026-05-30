@@ -1,0 +1,41 @@
+[
+
+    {
+
+        "idKey" : "4c93705a585161",
+        "data" : [
+
+            {
+
+                "block" : "window",
+                "pageMenuWindows" : ["post", "students", "assigments", "grades"],
+                "sessionMenuWindows" : [
+
+                    {
+
+                        "courses":["all"]
+
+                    }
+
+                ],
+
+                "creationMenu" : true
+
+            },
+
+            {
+
+                "block" : "info",
+                "name" : "Rusch Da Impanna",
+                "pfp" : 0,
+                "email" : "ruschdaimpanna@gmail.com",
+                "role" : "a",
+                "tag" : "RDI"
+
+            }
+
+        ]
+
+    }
+
+]

@@ -1,0 +1,68 @@
+body{
+
+    background-color: #915DF5;
+
+    color: #A98FF2;
+
+
+}
+
+article{
+
+    background-color: #F5C949;
+
+    padding: 10vh 12vw;
+
+    h2{
+
+        text-align: center;
+
+    }
+    p{
+
+        text-align: center;
+
+        color: #E776F5;
+
+    }
+    div{
+
+        text-align: center;
+
+    }
+    iframe{
+
+        padding: 30px 0;
+        border-radius: 15px;
+
+        background-color: #A98FF2;
+
+    }
+
+    a:link{
+
+        color: #915DF5;
+
+    }
+    a:visited{
+
+        color: #E776F5;
+
+    }
+    a:hover{
+
+        color: white
+
+    }
+    a:active{
+
+        color: #F5EE76;
+
+    }
+}
+
+footer{
+
+    margin-top: 0px;
+
+}

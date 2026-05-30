@@ -1,0 +1,73 @@
+/*Body*/
+body {
+
+    background-color: #915DF5;
+
+    p{
+
+        font-size: 1.2em;
+
+    }
+    ul:not(nav ul, header ul){
+
+        padding: 15px 50px;
+
+    }
+    li:not(nav li, header li){
+
+        font-family: 'Quicksand';
+
+        padding: 10px 0;
+
+        list-style: disc;
+
+    }
+
+}
+
+.container{
+
+    background-color: #F5C949;
+    color: #A98FF2;
+
+    padding: 10vh 12vw;
+
+    a:link{
+
+        color: #915DF5;
+
+    }
+    a:visited{
+
+        color: #E776F5;
+
+    }
+    a:hover{
+
+        color: white
+
+    }
+    a:active{
+
+        color: #F5EE76;
+
+    }
+
+}
+article{
+
+    background-color: #A98FF2;
+    color: #F5EE76;
+
+    padding: 50px;
+    margin: 30px 0;
+
+}
+
+
+
+footer{
+
+    margin-top: 0px;
+
+}

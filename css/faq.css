@@ -1,0 +1,30 @@
+body{
+
+    background-color: #915DF5;
+
+    color: #F3EDB3;
+
+
+}
+
+article{
+
+    margin-top: 50px;
+
+    background-color: #A98FF2;
+
+    padding: 10vh 12vw;
+
+    h1, h2, h3{
+
+        color: #E4A7F2;
+
+    }
+
+    h2{
+
+        text-align: center;
+
+    }
+
+}

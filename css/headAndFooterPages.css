@@ -1,0 +1,397 @@
+/*Font set*/
+button, a, label, p, h4, h5, h6{
+
+    font-family: 'Quicksand';
+    line-height: 1.5;
+
+}
+h1, h2, h3{
+
+    font-family: 'Bubblegum Sans';
+
+}
+body p {
+
+    font-size: 150%;
+
+}
+h1{
+
+    font-size: 50px;
+
+    text-align: center;
+
+}
+h4:not(nav h4, footer h4){
+
+    font-size: 30px;
+
+}
+
+b{
+
+    font-family: 'Quicksand';
+    font-weight: 700;
+
+}
+
+br{
+
+    user-select: none;
+
+}
+
+/*Nav bar*/
+body::-webkit-scrollbar{
+
+    width: 15px;
+
+    border-radius: 10px 10px 0 0;
+
+    background-color: #A98FF2;
+
+}
+body::-webkit-scrollbar-thumb{
+
+    background-color: #E776F5;
+
+    border: 3px solid #A98FF2;
+
+    border-radius: 15px;
+    
+
+}
+body::-webkit-scrollbar-thumb:hover{
+
+    background-color: #F5EE76;
+        
+}
+
+/*Header*/
+header {
+
+    top: 0;
+    background-color: #915DF5;
+
+    position: sticky;
+    height: 25vh;
+
+    overflow: visible;
+
+    z-index: 2;
+
+    a{
+
+    margin-left: 30px;
+
+    }
+
+}
+
+#logo {
+
+    height: 90%;
+    margin-top: 1vh;
+
+}
+
+/*Language buttons*/
+#langWrapper {
+
+    position: relative;
+    float: right;
+
+    margin-right: 5vw;
+    margin-top: 5vh;
+
+    height: 75%;
+    width: 25%;
+
+}
+
+/*For language button*/
+#langButton {
+
+    text-align: center;
+    padding-top: 5%;
+    font-size: 24px;
+
+    position: absolute;
+    width: 100%;
+    height: 45%;
+    margin-top: 1vh;
+
+    border: 0px;
+    border-radius: 30px;
+
+    background-color: #A98FF2;
+    color: #915DF5;
+
+    user-select: none;
+
+    z-index: 1;
+
+}
+#langButton:hover {
+
+    color: white;
+    cursor: pointer;
+
+}
+input#langToggle:checked + #langButton {
+
+    background-color: #F5C949
+
+}
+
+/*For login button*/
+#loginButton {
+
+    text-align: center;
+    padding-top: 6%;
+    font-size: 24px;
+
+    position: absolute;
+    width: 100%;
+    height: 45%;
+    margin-top: 1vh;
+
+    border: 0px;
+    border-radius: 30px;
+
+    background-color: #E776F5;
+    color: #F5EE76;
+
+    user-select: none;
+
+    z-index: 1;
+
+}
+#loginButton:hover {
+
+    color: white;
+    cursor: pointer;
+
+}
+
+
+
+/*Options of language*/
+#langList {
+
+    /*Animation for language*/
+
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+
+    position: absolute;
+
+    top: 30%;
+
+    height: 12em;
+    width: 100%;
+    
+    background-color: #F3EDB3;
+
+    box-sizing: border-box;
+
+    border-radius: 0 0 30px 30px;
+
+    text-align: center;
+
+    ul{
+
+    padding: 52px 25px 0 0;
+
+    }
+
+    li{
+
+    padding: 5%;
+
+    font-size: 20px;
+
+    user-select: none;
+    cursor: pointer;
+
+    }
+
+}
+#langToggle:checked ~ #langList {
+
+  max-height: 337px;
+
+}
+ 
+#sameLang{
+
+    color: #915DF5;
+
+}
+#sameLang:hover {
+
+    color: white;
+
+}
+#enLang{
+
+    color: #F5C949;
+    text-decoration: none;
+
+}
+#enLang:hover {
+
+    color: white;
+
+}
+
+/*Navigation*/
+nav{
+
+    margin-left: 60px;
+
+    position: sticky;
+    top: 25vh;
+
+    z-index: 100;
+
+    /*For all buttons*/
+    span {
+
+    margin: 16px 0 3px 0;
+    padding: 5px 29px;
+
+    background-color: #F3EDB3;
+    color: #F5C949;
+    border: 0;
+
+    user-select: none;
+    cursor: pointer;
+
+    }
+
+}
+
+
+/*Only menu button*/
+#menuButton{
+
+    position: absolute;
+
+    border-radius: 50%;
+    scale: 2.5;
+
+    padding: 5px 6px;
+    margin-left: 23px;
+    margin-top: 30px;
+
+    user-select: none;
+    cursor: pointer;
+
+    background-color: #E776F5;
+    color: #F5EE76;
+
+    z-index: 2;
+
+}
+#menuButton:hover {
+
+    color: white;
+
+}
+
+/*Menu list*/
+#menuDisplay {
+
+    margin-right: 10px;
+    margin-top: 45px;
+    padding: 30px 0 25px 0;
+
+    background-color: #A98FF2;
+    border-radius: 0 0 50px 50px;
+
+    li {
+
+    font-size: 10px;
+    text-align: center;
+    color: #F3EDB3;
+
+    }
+
+    a{
+
+    color: inherit;
+
+    }
+
+}
+
+/*Animation for menu*/
+#menuContainer{
+
+    overflow: hidden;
+    max-height: 0;
+
+    border-radius: 40px;
+
+    transition: max-height 0.5s ease-in-out;
+
+    position: absolute;
+
+}
+#menuToggle:checked ~ #menuContainer {
+
+    max-height: 450px;
+
+}
+
+
+#menuDisplay span:hover {
+
+    color: white;
+
+} 
+
+/*Footer*/
+footer {
+
+    background-color: #F5EE76;
+
+    padding: 30px 0;
+    margin-top: 50px;
+
+    h4, h5 {
+
+        text-align: center;
+
+        color: #E776F5;
+        font-size: 24px;
+
+    }
+    
+    a, a h4{
+
+        color: #A98FF2;
+        user-select: none;
+
+    }
+    a:hover, a h4:hover{
+
+        color: white;
+
+    }
+
+    h6 {
+
+    position: absolute;
+
+    right: 0%;
+    margin-top: 25px;
+
+    color: #E776F5;
+    font-size: 4px;
+
+    }
+
+}

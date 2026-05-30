@@ -1,0 +1,189 @@
+/*Font set*/
+button, a, label, p, h4, h5, h6, .swal2, .swal2-html-container{
+
+    font-family: 'Quicksand';
+    line-height: 1.5;
+
+}
+h1, h2, h3{
+
+    font-family: 'Bubblegum Sans';
+
+}
+body p {
+
+    font-size: 150%;
+
+}
+h1{
+
+    font-size: 50px;
+
+    text-align: center;
+
+}
+h4:not(nav h4, footer h4){
+
+    font-size: 30px;
+
+}
+
+b{
+
+    font-family: 'Quicksand';
+    font-weight: 700;
+
+}
+
+br{
+
+    user-select: none;
+
+}
+
+nav{
+
+    position: relative;
+
+}
+
+/*Session Menu*/
+.sessionMenu{
+
+    position: fixed;
+
+}
+.sessionMenu .top{
+
+    position: absolute;
+
+    width: 280px;
+    height: 290px;
+
+    background-color: #F5EE76;
+
+    #profileOptions{
+
+        position: absolute;
+
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.3s cubic-bezier(1, -0.05, 0, 1);
+
+        padding-bottom: 30px;
+
+        overflow: hidden;
+
+        ul{
+
+            background-color: #A98FF2;
+
+            padding: 30px 20px;
+            border-radius: 15px;
+
+            text-align: center;
+
+            li{
+
+                padding: 3px 0;
+                
+                a {
+
+                    text-decoration: none;
+
+                    color: #F5EE76;
+
+                }
+                a:hover {
+
+                    color: white;
+
+                }
+
+            }
+
+        }   
+
+        .triangle{
+
+            position: absolute;
+
+            top: 115px;
+            left: 55px;
+
+        }
+
+    }
+
+
+    #logToggle:checked ~ #profileOptions {
+
+        transform: scaleY(1);
+
+        padding-bottom: 30px;
+
+    }
+
+    #profile{
+
+        position: relative;
+
+        left: 30px;
+        top: 20px;
+
+        img{
+
+            border-radius: 50%;
+
+            width: 30%;
+
+        }
+
+    }
+    #profile:hover{
+
+        cursor: pointer;
+
+    }
+
+
+}
+
+/*Main page*/
+
+body{
+
+    background-color: #E4A7F2;
+
+}
+
+#showPage{
+
+    position: relative;
+    width: 80vw;
+    min-height: 100vh;
+
+    top: 10vh;
+    left: 5vw;
+
+    background-color: #915DF5;
+
+    padding: 30px;
+    margin-bottom: 50px;
+
+    iframe {
+
+    width: 100%;
+
+    border: none;
+    display: block;
+    
+    }
+
+}
+
+footer{
+
+    height: 10vh;
+
+}
