@@ -57,7 +57,7 @@ function startApp(){
 
                 if (isEnglish){
 
-                    window.location.href = '../html/portalEn.php'
+                    window.location.href = '../html/portalEs.php'
 
                 } else{
 
