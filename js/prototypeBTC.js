@@ -9,6 +9,8 @@ const mainMenu = document.querySelector('.mainMenu')
 const songTab = document.querySelector('.songSelection')
 const gameTab = document.querySelector('.game')
 
+let scoreOnGames = 0
+
 lvlBtns.forEach((btn, id) => {
 
     btn.addEventListener('click', () => {
@@ -113,26 +115,96 @@ function generateList (songsToSelect) {
 
 function playGame (song) {
 
+    let gameActive = true
+
     gameTab.classList.add('appear')
     songTab.classList.remove('appear')
 
     const video = gameTab.querySelector('video')
-    const lyricsCont = gameTab.querySelector('.lyricsWrap')
+    const lyricsChild = [...gameTab.querySelector('.lyricsWrap').children]
     let position = 0
 
     video.removeAttribute('controls')
     video.src = song.video
 
-    setInterval(() => {
-        contador.textContent = numero;
+    video.addEventListener("loadeddata", () => {
 
-        if (numero === 0) {
-            clearInterval(intervalo);
-            contador.style.display = "none"; // Oculta el contador
-            video.play(); // Inicia el video
+        countdown()
+        updateLyrics()
+
+    })
+
+    lyricsChild.forEach(lyric => {
+
+        lyric.innerText = '...'
+        
+    })
+
+    function updateLyrics() {
+
+        if (!gameActive) return
+
+        const time = video.currentTime
+
+        const currentIndex = song.lyrics.findIndex(line => time >= line.time && time < (song.lyrics[song.lyrics.indexOf(line)+1].time ?? video.duration))
+
+        if (currentIndex !== -1) {
+
+            position = time
+            renderLyrics(currentIndex, time)
+
         }
 
-        numero--;
-    }, 1000);
+        requestAnimationFrame(updateLyrics)
+
+    }
+
+    const exitHandler = () => {
+
+        gameActive = false
+
+        video.pause()
+        video.removeAttribute('src')
+        video.load()
+
+        songTab.classList.add('appear')
+        gameTab.classList.remove('appear')
+
+        goBackBtn.removeEventListener('click', exitHandler)
+    }
+
+    document.getElementById('goBackBtn').addEventListener('click', exitHandler)
+
+    function renderLyrics(index, time) {
+
+        lyricsChild[0].innerText = song.lyrics[index - 1]?.text || ""
+
+        lyricsChild[1].innerText = song.lyrics[index].text
+
+        lyricsChild[2].innerText = song.lyrics[index + 1]?.text || ""
+
+    }
+
+
+    function countdown () {
+
+        let count = 3
+
+        const counter = setInterval(() => {
+
+            lyricsChild[1].textContent = count
+
+            if (count === 0) {
+                clearInterval(counter)
+                video.play()
+            }
+
+            count--
+
+        }, 1000)
+
+    }
+
+    
 
 }
