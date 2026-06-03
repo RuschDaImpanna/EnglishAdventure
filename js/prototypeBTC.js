@@ -132,7 +132,7 @@ function playGame (song) {
     const video = gameTab.querySelector('video')
     const lyricsChild = [...gameTab.querySelector('.lyricsWrap').children]
     let indexedTime = 0
-    let position = -1
+    let position = -2
 
     video.removeAttribute('controls')
     video.src = song.video
@@ -158,7 +158,7 @@ function playGame (song) {
 
         const currentIndex = song.lyrics.findIndex((line, index) => time >= line.time && time < (song.lyrics[index + 1]?.time ?? video.duration))
 
-        if (currentIndex !== -1 && position !== currentIndex) {
+        if (position !== currentIndex) {
 
             position = currentIndex
             indexedTime = time
@@ -188,17 +188,70 @@ function playGame (song) {
 
     function renderLyrics(index, time) {
 
-        const last = song.lyrics[index - 1]?.text || ""
-        const current = song.lyrics[index].text
-        const next = song.lyrics[index + 1]?.text || ""
+        const lyricsObj = createObjects([song.lyrics[index - 1]?.text || "", song.lyrics[index]?.text || "", song.lyrics[index + 1]?.text || ""])
 
-        console.log(nlp(current).match('#PastTense').out('array'))
+        console.log(lyricsObj)
 
-        lyricsChild[0].innerText = last
+        lyricsChild[0].innerHTML = lyricsObj[0]
 
-        lyricsChild[1].innerText = current
+        lyricsChild[1].innerHTML = lyricsObj[1]
 
-        lyricsChild[2].innerText = next
+        lyricsChild[2].innerHTML = lyricsObj[2]
+
+    }
+
+    function createObjects (lyricsObj) {
+
+        const conditions = ['#PastTense', '(#Auxiliary|#Copula)']
+        const lyricsHTML = []
+
+        lyricsObj.forEach(lyric => {
+
+            const doc = nlp(lyric)
+            const terms = doc.terms().json()
+
+            let html = ''
+
+            terms.forEach(t => {
+
+
+                const tags = t.terms[0].tags
+
+                const condition = conditions[settings[1] - 1]
+
+                const isMatch = matchesCondition(tags, condition)
+
+                if (isMatch) {
+
+                    html += `<input type="text" class="inputSong"> `
+
+                } else {
+
+                    html += t.text + ' '
+
+                }
+
+            })
+
+            lyricsHTML.push(html.trim())
+            
+        })
+
+        function matchesCondition(tags, condition) {
+
+            const options = condition.replace(/[()]/g, '').split('|')
+
+            return options.some(opt => {
+
+                opt = opt.replace('#', '')
+                console.log(opt, tags.find(t => t == opt))
+                return tags.find(t => t == opt)
+                
+            })
+
+        }
+
+        return lyricsHTML
 
     }
 
@@ -209,7 +262,7 @@ function playGame (song) {
 
         const counter = setInterval(() => {
 
-            lyricsChild[1].textContent = count
+            lyricsChild[1].innerHTML = count
 
             if (count === 0) {
                 clearInterval(counter)

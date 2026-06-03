@@ -155,6 +155,8 @@ body{
         grid-auto-flow: row;
         gap: 2.5vh;
         place-content: center;
+        align-items: center;
+        text-align: center;
 
         font-size: 1.5em;
 
