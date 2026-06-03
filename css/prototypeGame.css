@@ -166,6 +166,8 @@ article:not(.appear) {
 
     transition: opacity 0.25s ease;
 
+    z-index: -1;
+
 }
 
 .menues {
