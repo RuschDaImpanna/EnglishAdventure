@@ -1,0 +1,53 @@
+[
+
+    {
+
+        "id": 1,
+        "songs": [
+
+            {
+                "name":"The Scientist",
+                "band":"Coldplay",
+                "video":"https://youtu.be/RB-RcX5DS5A?si=4-r4rngHd8yO2Oe7", 
+                "lyrics":[
+
+                    {"time": 2, "text":"Come up to meet you, tell you I'm sorry"},
+                    {"time": 8, "text":"You don't know how lovely you are"},
+                    {"time": 15, "text":"I had to find you, tell you I need you"},
+                    {"time": 21, "text":"Tell you I set you apart"},
+                    {"time": 28, "text":"Tell me your secrets and ask me your questions"},
+                    {"time": 34, "text":"Oh, let's go back to the start"},
+                    {"time": 41, "text":"Runnin' in circles, comin' up tails"},
+                    {"time": 47, "text":"Heads on a science apart"},
+                    {"time": 54, "text":"Nobody said it was easy"},
+                    {"time": 60, "text":"It's such a shame for us to part"},
+                    {"time": 67, "text":"Nobody said it was easy"},
+                    {"time": 74, "text":"No one ever said it would be this hard"},
+                    {"time": 82, "text":"Oh, take me back to the start"},
+                    {"time": 100, "text":"I was just guessing at numbers and figures"},
+                    {"time": 106, "text":"Pulling the puzzles apart"},
+                    {"time": 113, "text":"Questions of science, science and progress"},
+                    {"time": 119, "text":"Do not speak as loud as my heart"},
+                    {"time": 126, "text":"But tell me you love me, come back and haunt me"},
+                    {"time": 133, "text":"Oh, and I rush to the start"},
+                    {"time": 139, "text":"Runnin' in circles, chasin' our tails"},
+                    {"time": 146, "text":"Coming back as we are"},
+                    {"time": 152, "text":"Nobody said it was easy"},
+                    {"time": 159, "text":"Oh, it's such a shame for us to part"},
+                    {"time": 165, "text":"Nobody said it was easy"},
+                    {"time": 172, "text":"No one ever said it would be so hard"},
+                    {"time": 181, "text":"I'm going back to the start"}
+
+                ]}
+
+        ]
+
+    },
+    {
+
+        "id":2
+
+    }
+
+    
+]

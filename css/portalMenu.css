@@ -43,109 +43,55 @@ br{
 
 nav{
 
-    position: relative;
+    position: sticky;
 
 }
 
 /*Session Menu*/
-.sessionMenu{
+.sessionMenu {
 
-    position: fixed;
+    padding: 10px 10px 0px;
+    box-sizing: border-box;
 
-}
-.sessionMenu .top{
+    background-color: #F3EDB3;
 
-    position: absolute;
+    width: 100%;
+    height: 20vh;
 
-    width: 280px;
-    height: 290px;
+    display: grid;
+    grid-template-rows: 3fr 1fr;
 
-    background-color: #F5EE76;
+    .top {
 
-    #profileOptions{
-
-        position: absolute;
-
-        transform: scaleY(0);
-        transform-origin: bottom;
-        transition: transform 0.3s cubic-bezier(1, -0.05, 0, 1);
-
-        padding-bottom: 30px;
+        width: 100%;
+        height: 100%;
 
         overflow: hidden;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
 
-        ul{
+        #profile {
 
-            background-color: #A98FF2;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-            padding: 30px 20px;
-            border-radius: 15px;
+            img {
 
-            text-align: center;
-
-            li{
-
-                padding: 3px 0;
-                
-                a {
-
-                    text-decoration: none;
-
-                    color: #F5EE76;
-
-                }
-                a:hover {
-
-                    color: white;
-
-                }
+                height: 100%;
+                border-radius: 50%;
+                aspect-ratio: 1/1;
+                object-fit: contain;
 
             }
 
-        }   
-
-        .triangle{
-
-            position: absolute;
-
-            top: 115px;
-            left: 55px;
-
         }
 
-    }
-
-
-    #logToggle:checked ~ #profileOptions {
-
-        transform: scaleY(1);
-
-        padding-bottom: 30px;
+        
 
     }
-
-    #profile{
-
-        position: relative;
-
-        left: 30px;
-        top: 20px;
-
-        img{
-
-            border-radius: 50%;
-
-            width: 30%;
-
-        }
-
-    }
-    #profile:hover{
-
-        cursor: pointer;
-
-    }
-
 
 }
 
@@ -174,6 +120,7 @@ body{
     iframe {
 
     width: 100%;
+    height: 100vh;
 
     border: none;
     display: block;

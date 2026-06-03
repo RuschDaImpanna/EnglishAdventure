@@ -30,7 +30,7 @@
 
     <nav>
 
-        <div class="pageMenu"></div>
+        <!--<div class="pageMenu"></div>-->
 
         <div class="sessionMenu">
 
@@ -62,7 +62,7 @@
 
         </div>
 
-        <div class="creationMenu"></div>
+        <!--<div class="creationMenu"></div>-->
 
     </nav>
 

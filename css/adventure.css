@@ -4,6 +4,12 @@ html {
 
 }
 
+body {
+
+    overflow: hidden;
+
+}
+
 /*Top part*/
 .topBlocks {
 
