@@ -51,7 +51,7 @@ body{
     transition: opacity 0.25s ease;
 
 }
-.songSelection {
+.songSelection.appear {
 
     height: 100%;
     display: grid;
@@ -102,7 +102,63 @@ body{
 
 }
 
-.mainMenu:not(.appear), .songSelection:not(.appear) {
+.game.appear {
+
+    height: 100%;
+    display: grid;
+    grid-template-rows: 0.25fr 2fr 1fr;
+
+    overflow: hidden;
+    place-content: center;
+
+    .gameData {
+
+        display: grid;
+        place-content: center;
+        grid-auto-flow: column;
+
+        * {
+
+            padding: 0 5vw;
+            box-sizing: border-box;
+
+        }
+
+    }
+
+    video {
+
+        width: 100%;
+        max-width: 50vw;
+        height: auto;
+
+        object-fit: contain;
+
+        padding: 5vw 5vh;
+        box-sizing: border-box;
+
+    }
+
+    .lyricsWrap {
+
+        display: grid;
+        grid-auto-flow: row;
+        gap: 2.5vh;
+        place-content: center;
+
+        font-size: 1.5em;
+
+        div:nth-child(odd) {
+
+            opacity: 0.5;
+
+        }
+
+    }
+
+}
+
+article:not(.appear) {
 
     position: absolute;
 

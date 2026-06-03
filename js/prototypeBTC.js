@@ -6,7 +6,8 @@ const diffBtns = [...document.getElementById('difficultyList').children]
 const settings = []
 
 const mainMenu = document.querySelector('.mainMenu')
-const songTag = document.querySelector('.songSelection')
+const songTab = document.querySelector('.songSelection')
+const gameTab = document.querySelector('.game')
 
 lvlBtns.forEach((btn, id) => {
 
@@ -63,9 +64,9 @@ function generateList (songsToSelect) {
     }
 
     mainMenu.classList.remove('appear')
-    songTag.classList.add('appear')
+    songTab.classList.add('appear')
 
-    const songsPool = songTag.querySelector('.songsPool')
+    const songsPool = songTab.querySelector('.songsPool')
 
     songsPool.innerHTML = ''
 
@@ -75,8 +76,8 @@ function generateList (songsToSelect) {
         playingVid.classList.add('playingVid')
 
             const thumbnail = document.createElement('img')
-            const videoId = song.video.slice(16, song.video.indexOf('?'))
-            thumbnail.src = `https://img.youtube.com/vi${videoId}/hqdefault.jpg`
+            const videoId = song.video.slice(29, song.video.indexOf('?'))
+            thumbnail.src = song.image
 
             const information = document.createElement('div')
 
@@ -102,7 +103,7 @@ function generateList (songsToSelect) {
 
     document.getElementById('backToOpt').addEventListener('click', () => {
 
-        songTag.classList.remove('appear')
+        songTab.classList.remove('appear')
         mainMenu.classList.add('appear')
 
     })
@@ -112,6 +113,26 @@ function generateList (songsToSelect) {
 
 function playGame (song) {
 
+    gameTab.classList.add('appear')
+    songTab.classList.remove('appear')
 
+    const video = gameTab.querySelector('video')
+    const lyricsCont = gameTab.querySelector('.lyricsWrap')
+    let position = 0
+
+    video.removeAttribute('controls')
+    video.src = song.video
+
+    setInterval(() => {
+        contador.textContent = numero;
+
+        if (numero === 0) {
+            clearInterval(intervalo);
+            contador.style.display = "none"; // Oculta el contador
+            video.play(); // Inicia el video
+        }
+
+        numero--;
+    }, 1000);
 
 }
