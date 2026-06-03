@@ -74,8 +74,12 @@ function generateList (songsToSelect) {
 
     songsToSelect.songs.forEach(song => {
 
+        const isAvailable = song.compatible[settings[1]-1]
+        console.log(isAvailable)
+
         const playingVid = document.createElement('div')
         playingVid.classList.add('playingVid')
+        if (!isAvailable) playingVid.classList.add('notSupport')
 
             const thumbnail = document.createElement('img')
             const videoId = song.video.slice(29, song.video.indexOf('?'))
@@ -95,11 +99,16 @@ function generateList (songsToSelect) {
 
         songsPool.append(playingVid)
 
-        playingVid.addEventListener('click', () => {
+        if (isAvailable) {
 
-            playGame(song)
+            playingVid.addEventListener('click', () => {
 
-        })
+                playGame(song)
+
+            })
+
+
+        }
         
     })
 
@@ -122,7 +131,8 @@ function playGame (song) {
 
     const video = gameTab.querySelector('video')
     const lyricsChild = [...gameTab.querySelector('.lyricsWrap').children]
-    let position = 0
+    let indexedTime = 0
+    let position = -1
 
     video.removeAttribute('controls')
     video.src = song.video
@@ -146,11 +156,12 @@ function playGame (song) {
 
         const time = video.currentTime
 
-        const currentIndex = song.lyrics.findIndex(line => time >= line.time && time < (song.lyrics[song.lyrics.indexOf(line)+1].time ?? video.duration))
+        const currentIndex = song.lyrics.findIndex((line, index) => time >= line.time && time < (song.lyrics[index + 1]?.time ?? video.duration))
 
-        if (currentIndex !== -1) {
+        if (currentIndex !== -1 && position !== currentIndex) {
 
-            position = time
+            position = currentIndex
+            indexedTime = time
             renderLyrics(currentIndex, time)
 
         }
@@ -177,11 +188,17 @@ function playGame (song) {
 
     function renderLyrics(index, time) {
 
-        lyricsChild[0].innerText = song.lyrics[index - 1]?.text || ""
+        const last = song.lyrics[index - 1]?.text || ""
+        const current = song.lyrics[index].text
+        const next = song.lyrics[index + 1]?.text || ""
 
-        lyricsChild[1].innerText = song.lyrics[index].text
+        console.log(nlp(current).match('#PastTense').out('array'))
 
-        lyricsChild[2].innerText = song.lyrics[index + 1]?.text || ""
+        lyricsChild[0].innerText = last
+
+        lyricsChild[1].innerText = current
+
+        lyricsChild[2].innerText = next
 
     }
 
