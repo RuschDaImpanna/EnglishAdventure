@@ -8,8 +8,11 @@ const settings = []
 const mainMenu = document.querySelector('.mainMenu')
 const songTab = document.querySelector('.songSelection')
 const gameTab = document.querySelector('.game')
+const gameUI = [...document.querySelector('.gameData').children]
 
 let scoreOnGames = 0
+let streak = 0
+let hp = 3
 
 lvlBtns.forEach((btn, id) => {
 
@@ -126,6 +129,10 @@ function playGame (song) {
 
     let gameActive = true
 
+    hp = 3
+    gameUI[1].innerText = `HP: ♥♥♥`
+    gameUI[2].innerText = `Time: 15`
+
     gameTab.classList.add('appear')
     songTab.classList.remove('appear')
 
@@ -158,10 +165,11 @@ function playGame (song) {
 
         const currentIndex = song.lyrics.findIndex((line, index) => time >= line.time && time < (song.lyrics[index + 1]?.time ?? video.duration))
 
+        indexedTime = time
+
         if (position !== currentIndex) {
 
             position = currentIndex
-            indexedTime = time
             renderLyrics(currentIndex, time)
 
         }
@@ -188,15 +196,114 @@ function playGame (song) {
 
     function renderLyrics(index, time) {
 
-        const lyricsObj = createObjects([song.lyrics[index - 1]?.text || "", song.lyrics[index]?.text || "", song.lyrics[index + 1]?.text || ""])
-
-        console.log(lyricsObj)
+        const lyricsObj = createObjects([[song.lyrics[index - 1]?.text || "", index - 1], [song.lyrics[index]?.text || "", index], [song.lyrics[index + 1]?.text || ""], index + 1])
 
         lyricsChild[0].innerHTML = lyricsObj[0]
 
         lyricsChild[1].innerHTML = lyricsObj[1]
 
         lyricsChild[2].innerHTML = lyricsObj[2]
+
+        const inputsOnLine = [...lyricsChild[1].querySelectorAll('input[type=text]')]
+        console.log(inputsOnLine)
+
+        if (inputsOnLine.length > 0) {
+
+            runOnInput(inputsOnLine, index)
+
+        }
+
+    }
+
+    async function runOnInput(inputs, index) {
+
+        const delayTime = (song.lyrics[index + 1]?.time - song.lyrics[index]?.time)*0.85
+        const targetTime = song.lyrics[index]?.time + delayTime;
+        console.log(delayTime, targetTime)
+
+        const interval = setInterval(() => {
+
+            if (indexedTime >= targetTime) {
+
+                clearInterval(interval)
+
+                let currentCountDown = 15
+                const splitText = song.lyrics[index].text.split(' ')
+
+                if (inputs.every(input =>  input.value.trim().toLowerCase() === splitText[input.id.slice(-1)]?.trim().toLowerCase())) {
+
+                    updateScore(15)
+                    return
+
+                }
+                video.pause()
+
+                const timer = setInterval(() => {
+
+                    gameUI[2].innerText = `Time: ${currentCountDown.toFixed(1)}`
+
+                    const allCorrect = inputs.every(input =>  input.value.trim().toLowerCase() === splitText[input.id.slice(-1)]?.trim().toLowerCase())
+                    
+                    if (allCorrect) {
+
+                        clearInterval(timer)
+                        updateScore(currentCountDown)
+                        video.play()
+
+                        return
+
+                    }
+
+                    currentCountDown -= 0.1
+
+                    if (currentCountDown <= 0) {
+
+                        clearInterval(timer)
+                        updateHP()
+
+                        if (hp <= 0) {
+
+                            scoreOnGames = 0
+                            exitHandler()
+                            return
+
+                        }
+
+                        video.play()
+
+                    }
+                    
+
+                }, 100)
+
+            }
+
+        }, 10)
+
+        function updateScore (time) {
+
+            streak++
+            scoreOnGames += Math.floor(6.667*time + (100 * (1/streak)))
+
+            gameUI[3].innerText = `Score: ${scoreOnGames}`
+
+        }
+
+        function updateHP () {
+
+            streak = 0
+            hp--
+            let hearts = ''
+
+            for (let i = 0; i < hp; i++) {
+                
+                hearts += '♥'
+                
+            }
+
+            gameUI[1].innerText = `HP: ${hearts}`
+
+        }
 
     }
 
@@ -205,15 +312,18 @@ function playGame (song) {
         const conditions = ['#PastTense', '(#Auxiliary|#Copula)']
         const lyricsHTML = []
 
+        console.log(lyricsObj)
+
         lyricsObj.forEach(lyric => {
 
-            const doc = nlp(lyric)
-            const terms = doc.terms().json()
+            const doc = nlp(lyric[0])
+            const terms = doc.terms().json().filter(l => l.text !== '')
+
+            console.log(terms)
 
             let html = ''
 
-            terms.forEach(t => {
-
+            terms.forEach((t, id) => {
 
                 const tags = t.terms[0].tags
 
@@ -223,7 +333,7 @@ function playGame (song) {
 
                 if (isMatch) {
 
-                    html += `<input type="text" class="inputSong"> `
+                    html += `<input type="text" class="inputSong" id='txt${lyric[1]}_${id}'> `
 
                 } else {
 
@@ -244,7 +354,6 @@ function playGame (song) {
             return options.some(opt => {
 
                 opt = opt.replace('#', '')
-                console.log(opt, tags.find(t => t == opt))
                 return tags.find(t => t == opt)
                 
             })
