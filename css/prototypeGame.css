@@ -226,3 +226,30 @@ article:not(.appear) {
     transition: opacity 0.25s ease;
 
 }
+
+.tableScore {
+
+    display: grid;
+    grid-auto-flow: column;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    gap: 10px;
+
+    div {
+
+        width: 30vw;
+        box-sizing: border-box;
+        padding: 10px;
+        background-color: #d1d1d1;
+        border-radius: 15px;
+
+    }
+
+    img {
+
+        width: 50px;
+
+    }
+
+}

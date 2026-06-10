@@ -407,37 +407,128 @@ function playGame (song, tab) {
 
                     averageSum = 15 - (averageSum/average.length)
 
+                    let bestScore = 0
+
+                    for (let t = 1; t <= average.length; t++) {
+
+                        console.log(Math.floor(100 + (100 * (1/t))))
+                        
+                        bestScore += Math.floor(100 + (100 * (1/t)))
+                        
+                    }
+
+                    console.log(bestScore, average.length)
+
                     Swal.fire({
                         title: "Good job!",
                         html: `
                         <p>You gain <strong id="scoreSum">${oldScore}</strong></p>
                         <p>Average time per answer: <strong>${averageSum.toFixed(2)}</strong></p>
+                        <div class="tableScore">
+
+                            <div id="lvl0" style="background-color: #6BFF6B">
+
+                                <img src="https://images.emojiterra.com/google/noto-emoji/unicode-17.0/color/1024px/1f44e.png">
+
+                                <h3>AFK</h3>
+                                <h3>0pts</h3>
+                                <p>Didn't played</p>
+                            
+                            </div>
+
+                            <div id="lvl1">
+
+                                <img src="https://images.emojiterra.com/google/noto-emoji/unicode-17.0/color/1024px/1f423.png">
+
+                                <h3>Rookie singer</h3>
+                                <h3>${Math.floor(bestScore*0.01)}pts - ${Math.floor(bestScore*0.2)}pts</h3>
+                                <p>Recognizes some words, but student can't get on time</p>
+                            
+                            </div>
+
+                            <div id="lvl2">
+
+                                <img src="https://images.emojiterra.com/google/android-oreo/512px/1f3b6.png">
+
+                                <h3>Rythm Hunter</h3>
+                                <h3>${Math.floor(bestScore*0.21)}pts - ${Math.floor(bestScore*0.4)}pts</h3>
+                                <p>Recognizes some words and student try to link up words to get a meaning</p>
+                            
+                            </div>
+
+                            <div id="lvl3">
+
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-0Z7w4IriyMyeGgXhByKAZq3PzBzptkP9Vg&s">
+
+                                <h3>Musical Explorer</h3>
+                                <h3>${Math.floor(bestScore*0.41)}pts - ${Math.floor(bestScore*0.6)}pts</h3>
+                                <p>Understands a good amount of words and it's consistent throughout the game</p>
+                            
+                            </div>
+
+                            <div id="lvl4">
+
+                                <img src="https://images.emojiterra.com/google/android-12l/512px/1f3c3.png">
+
+                                <h3>Combo Master</h3>
+                                <h3>${Math.floor(bestScore*0.61)}pts - ${Math.floor(bestScore*0.8)}pts</h3>
+                                <p>Understands a good amount of words and it's consistent throughout the game</p>
+                            
+                            </div>
+
+                            <div id="lvl5">
+
+                                <img src="https://imgproxy.attic.sh/insecure/f:webp/h:675/q:90/w:675/plain/https://attic.sh/lvbkczph2wh8owf7bwrmp47i0mf0">
+
+                                <h3>The Grammy Legend</h3>
+                                <h3>${Math.floor(bestScore*0.91)}pts - ${Math.floor(bestScore)}pts</h3>
+                                <p>Understands a good amount of words and it's consistent throughout the game</p>
+                            
+                            </div>
+
+                        </div>
                         `,
                         icon: "success",
                         didOpen: () => {
 
-                            const sumAnim = document.getElementById('scoreSum');
+                            const sumAnim = document.getElementById('scoreSum')
+                            const tableContents = [...document.querySelector('.tableScore').children]
 
-                            const start = oldScore;
-                            const end = oldScore + scoreOnGames;
-                            const duration = 1000;
+                            const start = oldScore
+                            const end = oldScore + scoreOnGames
+                            const duration = 1000
 
-                            let startTime = null;
+                            let startTime = null
 
                             function animate(timestamp) {
 
-                                if (!startTime) startTime = timestamp;
+                                if (!startTime) startTime = timestamp
 
-                                const progress = Math.min((timestamp - startTime) / duration, 1);
+                                const progress = Math.min((timestamp - startTime) / duration, 1)
 
-                                const current = Math.floor(
-                                    start + (end - start) * progress
-                                );
+                                const current = Math.floor(start + (end - start) * progress)
 
-                                sumAnim.textContent = current;
+                                sumAnim.textContent = current
+                                for (let i = 0; i < tableContents.length; i++) {
+
+                                    if (i == 0) {
+
+                                        continue
+
+                                    }
+                                    
+                                    if (current >= bestScore*((((i-1)*20)+1)/100) && current < bestScore*((i*20)/100)) {
+
+                                        tableContents[i].style.backgroundColor = '#6BFF6B'
+
+                                    }
+                                    
+                                }
 
                                 if (progress < 1) {
-                                    requestAnimationFrame(animate);
+
+                                    requestAnimationFrame(animate)
+
                                 }
 
                             }
